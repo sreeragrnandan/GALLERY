@@ -49,7 +49,7 @@
              
             ?>
         <div class="floatcontainer">
-            <a href="gallary.php">
+            <a href="insideGal.php">
                 <div class="card album">
                     <img class="card-img-top" src="<?php echo $row['thumb'];?>" alt="Card image cap">
                     <div class="card-body">

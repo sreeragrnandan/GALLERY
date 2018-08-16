@@ -8,7 +8,7 @@ id: 'filediv'
 name: 'file[]',
 type: 'file',
 id: 'file'
-}), $("<br/><br/>")));
+}), $("")));
 });
 // Following function will executes on change event of file input to select different file.
 $('body').on('change', '#file', function() {

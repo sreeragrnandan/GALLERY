@@ -10,7 +10,7 @@ font-family:'Droid Sans',sans-serif
 #formdiv{
 width:100%;
 float:left;
-text-align:center;
+
 }
 form{
 padding:40px 20px;
@@ -53,10 +53,10 @@ color:red;
 text-align:left
 }
 #img{
-width:17px;
+width:4rem;
 border:none;
-height:17px;
-margin-left:-20px;
+height:4rem;
+margin-left:-25%;
 margin-bottom:0px
 }
 .abcd{
@@ -64,18 +64,11 @@ text-align:center;
 float: left;
 }
 .abcd img{
-height:100px;
-width:100px;
+height:13rem;
+width:13rem;
 padding:5px;
 border:1px solid #e8debd
 }
 b{
 color:red
-}
-img#previewimg1 {
-    width: 18rem;
-    height: 18rem;
-}
-div#abcd1 {
-    margin-left: 40%;
 }

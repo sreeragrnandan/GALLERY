@@ -11,9 +11,9 @@ function imageResize($imageResourceId,$width,$height) {
 
 
     //height and width of thumb nale
-    $targetWidth =238;
+    $targetWidth =297.5;
 
-    $targetHeight =149;
+    $targetHeight =297.5;
 
 
 

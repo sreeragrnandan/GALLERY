@@ -8,7 +8,7 @@ id: 'filediv'
 name: 'file[]',
 type: 'file',
 id: 'file'
-}), $("<br/><br/>")));
+}), $("")));
 });
 // Following function will executes on change event of file input to select different file.
 $('body').on('change', '#file', function() {
@@ -16,7 +16,7 @@ if (this.files && this.files[0]) {
 abc += 1; // Incrementing global variable by 1.
 var z = abc - 1;
 var x = $(this).parent().find('#previewimg' + z).remove();
-$(this).before("<div id='abcd" + abc + "' class='abcd'><img id='previewimg" + abc + "' src=''/></div><br>lllllllllll");
+$(this).before("<div id='abcd" + abc + "' class='abcd'><img id='previewimg" + abc + "' src=''/></div>");
 var reader = new FileReader();
 reader.onload = imageIsLoaded;
 reader.readAsDataURL(this.files[0]);

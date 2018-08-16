@@ -11,7 +11,11 @@
   <title>Lightbox Gallery Demo</title>
   <link rel="stylesheet" href="dist/css/lightboxgallery-min.css">
   <link rel="stylesheet" href="style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="script2.js"></script>
+<!------- Including CSS File ------>
+<link rel="stylesheet" type="text/css" href="style4.css">
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -27,14 +31,32 @@
 
   <div class="container">
       <div class="lightboxgallery-gallery clearfix">
-        <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/rahul-anil.jpg" data-title="Rahul Anil" data-alt="Rahul Anil" data-desc="A lightweight jQuery lightbox gallery plugin.">
+
+    <?php
+  $all_files = glob("img/*.*");
+  for ($i=0; $i<count($all_files); $i++)
+    {
+      $image_name = $all_files[$i];
+      $supported_format = array('gif','jpg','jpeg','png');
+      $ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
+      if (in_array($ext, $supported_format))
+          {?>
+        <a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $image_name;?>" data-title="<?php echo $image_name;?>" data-alt="Noah Hinton" data-desc="A lightweight jQuery lightbox gallery plugin.">
           <div>
-            <img src="https://kawshar.github.io/lightboxgallery/rahul-anil_thumb.jpg" title="Rahul Anil" alt="Rahul Anil">
+            <img src="<?php echo $image_name;?>" title="Rahul Anil" alt="<?php echo $image_name;?>"  style="width: 297.5px;height: 297.5px;">
             <div class="lightboxgallery-gallery-item-content">
               <span class="lightboxgallery-gallery-item-title">Rahul Anil</span>
             </div>
           </div>
         </a>
+        
+          <?php } else {
+              continue;
+          }
+    }
+?>
+
+
         <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/noah-hinton.jpg" data-title="Noah Hinton" data-alt="Noah Hinton" data-desc="A lightweight jQuery lightbox gallery plugin.">
           <div>
             <img src="https://kawshar.github.io/lightboxgallery/noah-hinton_thumb.jpg" title="Noah Hinton" alt="Noah Hinton">
@@ -159,10 +181,22 @@
   </div>
 
   <div class="footer">
-    <div class="container">
-      &copy; <a target="_blank" href="https://github.com/kawshar">Kawshar Ahmed</a> | Images from <a target="_blank" href="https://unsplash.com/">Unsplash</a>
-    </div>
+  
   </div>
+
+<div id="maindiv">
+<div id="formdiv">
+<h2>Multiple Image Upload Form</h2>
+<form enctype="multipart/form-data" action="" method="post">
+<input type="submit" value="Upload File" name="submit" id="upload" class="upload"/>
+
+<div id="filediv"><input name="file[]" type="file" id="file"/></div>
+<input type="button" id="add_more" class="upload" value="Add More Files"/>
+</form>
+<!------- Including PHP Script here ------>
+<?php include "upload2.php"; ?>
+</div>
+</div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="dist/js/lightboxgallery-min.js"></script>
