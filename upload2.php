@@ -1,9 +1,16 @@
 <?php
 if (isset($_POST['submit'])) {
+    include('config.php');
 
 $j = 0;     // Variable for indexing uploaded image.
-$target_path = "uploads/"; 
-$folderPath= "uploads/";// Declaring Path for uploaded images
+$data="select * from album where id=$a";
+$result=mysqli_query($conn,$data);
+if(mysqli_num_rows($result)>0){
+$row=mysqli_fetch_assoc($result);
+$folder=$row['Folder'];
+
+$target_path = "album/$folder/"; 
+$folderPath= "album/$folder/";// Declaring Path for uploaded images
   /*  */ 
     
 
@@ -117,6 +124,10 @@ $imageType = $sourceProperties[2];
         $ext = explode('.', basename($_FILES['file']['name'][$i]));   // Explode file name from dot(.)
         $file_extension = end($ext); // Store extensions in the variable.
 $target_path = $target_path . md5(uniqid()) . "." . $ext[count($ext) - 1];     // Set the target path with a new name of image.
+
+
+$data="insert into photos values(' ','$a','$target_path','$img','$target_path')";
+$result=mysqli_query($conn,$data);
 $j = $j + 1;      // Increment the number of uploaded images according to the files in array.
 if (     // Approx. 100kb files can be uploaded.
 in_array($file_extension, $validextensions)) {
@@ -131,6 +142,6 @@ echo $j. ').<span id="error">please try again!.</span><br/><br/>';
 echo $j. ').<span id="error">***Invalid file Size or Type***</span><br/><br/>';
 }
 }
-
+}
 }
 ?>

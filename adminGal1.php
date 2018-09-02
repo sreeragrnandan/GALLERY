@@ -143,7 +143,7 @@ if(isset($_POST["submit"])) {
         echo "Image Uploaded with created thumbnail Successfully.";
     }
     //inserting album details to database
-    $data="insert into album values('$id','$fname','$an','$cap','album/$name/$name.$ext','$img')";
+    $data="insert into album values('$id','$fname','$an','$cap','album/$fname/$name.$ext','$img')";
     $result=mysqli_query($conn,$data);
 }
 
@@ -233,11 +233,11 @@ function imageResize($imageResourceId,$width,$height) {
                     <!-- <br>
                     <a href="">DELETE ALBUM</a> -->
                     <br>
-                    <a href="admin.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')">DELETE ALBUM</a>
+                    <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')">DELETE ALBUM</a>
                     <br>
-                    <a href="admin.php?b=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to edit details?')">edit album details</a>
+                    <a href="adminGal1.php?b=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to edit details?')">edit album details</a>
                     <br>
-                    <a href="">edit contents</a>
+                    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>">edit contents</a>
                 </p>
             </div>
         </div>
@@ -260,7 +260,7 @@ function imageResize($imageResourceId,$width,$height) {
         <div class="card" style="width: 25rem;margin:20px;">
             <img class="card-img-top" src="img/album.jpg" alt="Card image cap" id="blah" >
             <div class="card-body">
-            <form class="makeAlbum" action="admin.php" method="post" enctype="multipart/form-data">
+            <form class="makeAlbum" action="adminGal1.php" method="post" enctype="multipart/form-data">
               <input type="text" placeholder="ALBUM NAME" name="albumName" style="width: 300px;height: 50px;" required>
               <br>
               <div class="container" style="margin-top:10px">
