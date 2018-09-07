@@ -115,6 +115,7 @@ while($row=mysqli_fetch_assoc($result)){
   <?php
   if($del==1)
   echo "file not found";
+  $del=0;
   ?>
 
   <div class="footer">
