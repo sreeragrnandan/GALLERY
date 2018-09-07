@@ -126,7 +126,7 @@ $imageType = $sourceProperties[2];
 $target_path = $target_path . md5(uniqid()) . "." . $ext[count($ext) - 1];     // Set the target path with a new name of image.
 
 
-$data="insert into photos values(' ','$a','$target_path','$img','$target_path')";
+$data="insert into photos values(' ','$a','$img','$target_path','Active')";
 $result=mysqli_query($conn,$data);
 $j = $j + 1;      // Increment the number of uploaded images according to the files in array.
 if (     // Approx. 100kb files can be uploaded.

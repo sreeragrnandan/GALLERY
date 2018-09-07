@@ -1,6 +1,7 @@
 <?php    
     //connecting database
     include('config.php');
+    
     if(isset($_GET['a']))
     {
         $a=$_GET['a'];
@@ -210,7 +211,7 @@ function imageResize($imageResourceId,$width,$height) {
         </div>
     </div>
     <!--------------------------------------- -->
-    <div class="container">
+    <div class="container" id="modify" style="display: none;">
 
 <h1 style="font-family: 'Lobster', cursive;letter-spacing: .25em;">ALBUMs</h1>
 <?php
@@ -221,7 +222,7 @@ function imageResize($imageResourceId,$width,$height) {
     while($row=mysqli_fetch_assoc($result)){
      
     ?>
-<div class="floatcontainer">
+<div class="floatcontainer" >
     <a href="gallary.php">
         <div class="card album" style="max-width: 15rem;">
             <img class="card-img-top" src="<?php echo $row['thumb'];?>" alt="Card image cap">
@@ -230,14 +231,13 @@ function imageResize($imageResourceId,$width,$height) {
                     name:<?php echo $row['name'];?>
                     <br>
                     caption:<?php echo $row['caption']; ?>
-                    <!-- <br>
-                    <a href="">DELETE ALBUM</a> -->
+
                     <br>
                     <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')">DELETE ALBUM</a>
                     <br>
-                    <a href="adminGal1.php?b=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to edit details?')">edit album details</a>
+                    <a href="adminGal1.php?b=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to edit details?')">Edit album Details</a>
                     <br>
-                    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>">edit contents</a>
+                    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to edit content?')">Edit contents</a>
                 </p>
             </div>
         </div>
@@ -251,16 +251,25 @@ function imageResize($imageResourceId,$width,$height) {
 </div>
 
 
-
-
     <!--------------------------------------- -->
 
     <!-- album making form -->
-    <div align="center" id="new" style="display: none;">
+    <?php
+    if(isset($_GET['b']))
+    {
+        $id=$_GET['b'];
+    $data="select * from album where id=$id";
+    $result=mysqli_query($conn,$data);
+    if(mysqli_num_rows($result)>0){
+        $row=mysqli_fetch_assoc($result);
+    }
+    }
+    ?>
+    <div align="center" id="new">
         <div class="card" style="width: 25rem;margin:20px;">
-            <img class="card-img-top" src="img/album.jpg" alt="Card image cap" id="blah" >
+            <img class="card-img-top" src="<?php if(isset($_GET['b'])){ echo $row['pic'];} else { echo 'img/album.jpg';}?> "alt="Card image cap" id="blah" >
             <div class="card-body">
-            <form class="makeAlbum" action="adminGal1.php" method="post" enctype="multipart/form-data">
+            <form class="makeAlbum" action="adminGal1.php" method="post" enctype="multipart/form-data" value="<?php if(isset($_GET['b'])){ echo $row['pic'];} else { echo 'img/album.jpg';}?> ">
               <input type="text" placeholder="ALBUM NAME" name="albumName" style="width: 300px;height: 50px;" required>
               <br>
               <div class="container" style="margin-top:10px">
@@ -277,7 +286,12 @@ function imageResize($imageResourceId,$width,$height) {
               <textarea name="message" rows="5" cols="40" style="line-height: 100%;align-items: left;">
                 </textarea>
               </p>
+            <?php  if(isset($_GET['b'])){  ?>
+                <button type="submit" class="btn btn-primary" style="margin-left:10px" name="submit" value="Submit" />EDIT ALBUM</button>
+            <?php  }?>
+            
               <button type="submit" class="btn btn-primary" style="margin-left:10px" name="submit" value="Submit" />MAKE ALBUM</button>
+            
             </form>
             </div>
           </div>
@@ -309,10 +323,13 @@ function imageResize($imageResourceId,$width,$height) {
             /* functions for displaing the the choosen section */
              function makeNew() {
 			document.getElementById('new').style.display='block';
+            document.getElementById('modify').style.display='none';
         }
         function modify() {
 			document.getElementById('new').style.display='none';
+            document.getElementById('modify').style.display='block';
         }
+
             /* functions for displaing the the choosen section !*/
         </script>
 
