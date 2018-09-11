@@ -115,6 +115,7 @@ while($row=mysqli_fetch_assoc($result)){
   <?php
   if($del==1)
   echo "file not found";
+  $del==0;
   ?>
 
   <div class="footer">
@@ -124,14 +125,14 @@ while($row=mysqli_fetch_assoc($result)){
 <div id="maindiv">
 <div id="formdiv">
 <h2>Multiple Image Upload Form</h2>
-<form enctype="multipart/form-data" action="" method="post">
+<form enctype="multipart/form-data" action="gallary&InsertPic.php?a_id=<?php echo $a; ?>" method="post">
 <input type="submit" value="Upload File" name="submit" id="upload" class="upload"/>
 
 <div id="filediv"><input name="file[]" type="file" id="file"/></div>
 <input type="button" id="add_more" class="upload" value="Add More Files"/>
 </form>
 <!------- Including PHP Script here ------>
-<?php include "upload2.php"; ?>
+
 </div>
 </div>
 

@@ -43,7 +43,7 @@ for ($i = 0; $i < count($_FILES['file']['name']); $i++) {
 /* --------------------------------------------------------------- */
 
 $fileNewName = md5(uniqid()); 
-    echo count($_FILES['file']['name']);
+    /* echo count($_FILES['file']['name']); */
 /* --------------------------------------------------------------- */
          // Extensions which are allowed.
 
@@ -134,7 +134,6 @@ in_array($file_extension, $validextensions)) {
 if (move_uploaded_file($_FILES['file']['tmp_name'][$i], $target_path)) {
 // If file moved to uploads folder.?>
 <?php
-echo $j. ').<span id="noerror">Image uploaded successfully!.</span><br/><br/>';
 } else {     //  If File Was Not Moved.
 echo $j. ').<span id="error">please try again!.</span><br/><br/>';
 }
