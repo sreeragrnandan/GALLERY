@@ -91,7 +91,7 @@ while($row=mysqli_fetch_assoc($result)){
 <?php } else{ ?>
 <a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&astatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Activate ?')">activate</a>
 <?php }?>
-<br>    <a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $row['name'];?>" data-title=" " data-alt="Noah Hinton"> 
+<br>    <a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $row['photos'];?>" data-title=" " data-alt="Noah Hinton"> 
 
         <div>
             <img src="<?php echo $row['thumb'];?>" title="Rahul Anil" alt="<?php echo $row['thumb'];?>" >
