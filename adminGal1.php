@@ -275,7 +275,7 @@ function imageResize($imageResourceId,$width,$height) {
                     caption:<?php echo $row['caption']; ?>
 
                     <br>
-                    <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')"> <div class="tooltip"><i class="fas fa-minus-circle fa-2x"></i>
+                    <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')"> <div class="tooltip"><i class="fas fa-minus-circle fa-2x">delete</i>
                     <span class="tooltiptext">DELETE ALBUM</span>
                     </div></a>
                     <br>
