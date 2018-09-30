@@ -53,7 +53,7 @@
                 <div class="card album">
                     <img class="card-img-top" src="<?php echo $row['thumb'];?>" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text"><?php echo $row['caption'];?></p>
+                        <p class="card-text"><?php echo $row['name'];?></p>
                     </div>
                 </div>
             </a>

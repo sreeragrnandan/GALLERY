@@ -35,16 +35,34 @@
 
         $sql="delete from album where id='$a'";
         if(mysqli_query($conn,$sql)){
-            
+          echo "";
+        }
 
-          echo "Successfully deleted ";
-        }
-        else{
-            echo "failed deletion;".mysqli_error($conn);
-        }
+        $sql="delete from photos where album_id='$a'";
+        if(mysqli_query($conn,$sql)){
+            echo "";
+          }
+
     }
 ?>
 <?php
+
+    /* -----------------------Editing album--------------------------------- */
+    if(isset($_POST['edit']))
+{
+    $a=$_POST["albumName"];
+    $b=$_POST["message"];
+    $id=$_POST['edit'];
+$data="update album set name='$a',caption='$b' where id='$id'";
+$result=mysqli_query($conn,$data);
+$s=0;
+if($result){
+$s=1;
+}
+//header("Location:adminGal1.php");
+}
+
+    /* -----------------------Editing album--------------------------------- */
 if(isset($_POST["submit"])) {
 
     /* -----------------------creating album--------------------------------- */
@@ -58,7 +76,6 @@ if(isset($_POST["submit"])) {
     {
         die("connet faild".mysqli_connect_error());
     }
-    echo "connection successfull";
     $id="";
     $an=$_POST["albumName"];
     /* $b=$_POST["picture"]; */
@@ -72,7 +89,6 @@ if(isset($_POST["submit"])) {
     if(is_array($_FILES)) {
 
         $file = $_FILES['picture']['tmp_name']; 
-        print_r($_FILES['picture']);
         $sourceProperties = getimagesize($file);
         
 
@@ -83,7 +99,7 @@ if(isset($_POST["submit"])) {
         $ext = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
 
         $imageType = $sourceProperties[2];
-        echo "imagetype".$imageType;
+        
 
         //creating tumbnale and uploading photo
         switch ($imageType) {
@@ -141,7 +157,7 @@ if(isset($_POST["submit"])) {
 
 
         move_uploaded_file($file, $folderPath. $fileNewName. ".". $ext);
-        echo "Image Uploaded with created thumbnail Successfully.";
+        
     }
     //inserting album details to database
     $data="insert into album values('$id','$fname','$an','$cap','album/$fname/$name.$ext','$img')";
@@ -180,6 +196,7 @@ function imageResize($imageResourceId,$width,$height) {
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>admin gallery</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
@@ -187,6 +204,31 @@ function imageResize($imageResourceId,$width,$height) {
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption" rel="stylesheet">
+    <style>
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+</style>
 </head>
 
 <body>
@@ -196,8 +238,8 @@ function imageResize($imageResourceId,$width,$height) {
             <h2>Admin page</h2>
         </div>
     </div>
-    <div class="container" style="margin-top: 100px">
-        <div class="row">
+    <div class="container" style="margin-top: 10px">
+        <div class="row" <?php if(isset($_GET['b'])){ echo 'style="display:none"';}?>>
             <div class="col" align="center">
                 <!-- buttons to create or modify the albums -->
                 <button type="button" name="add" class="btn btn-success" style="background-color:  rgba(25, 211, 87, 0.5);width: 100%;height: 100px;border-radius: 20px" 
@@ -233,11 +275,13 @@ function imageResize($imageResourceId,$width,$height) {
                     caption:<?php echo $row['caption']; ?>
 
                     <br>
-                    <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')">DELETE ALBUM</a>
+                    <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')"> <div class="tooltip"><i class="fas fa-minus-circle fa-2x"></i>
+                    <span class="tooltiptext">DELETE ALBUM</span>
+                    </div></a>
                     <br>
-                    <a href="adminGal1.php?b=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to edit details?')">Edit album Details</a>
+                    <a href="adminGal1.php?b=<?php echo $row['id']; ?>" >Edit album Details</a>
                     <br>
-                    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to edit content?')">Edit contents</a>
+                    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>">Edit contents</a>
                 </p>
             </div>
         </div>
@@ -270,28 +314,27 @@ function imageResize($imageResourceId,$width,$height) {
             <img class="card-img-top" src="<?php if(isset($_GET['b'])){ echo $row['pic'];} else { echo 'img/album.jpg';}?> "alt="Card image cap" id="blah" >
             <div class="card-body">
             <form class="makeAlbum" action="adminGal1.php" method="post" enctype="multipart/form-data" value="<?php if(isset($_GET['b'])){ echo $row['pic'];} else { echo 'img/album.jpg';}?> ">
-              <input type="text" placeholder="ALBUM NAME" name="albumName" style="width: 300px;height: 50px;" required>
+              <input type="text" placeholder="ALBUM NAME" name="albumName" style="width: 300px;height: 50px;" value=<?php if(isset($_GET['b'])){ echo $row['name'];}?> required>
               <br>
               <div class="container" style="margin-top:10px">
-                  <div class="row">
+                  <div class="row"  <?php if(isset($_GET['b'])){ echo 'style="display:none"';}?>>
                       <div class="col-8" style="padding:0px">
               UPLOAD TITLE IMAGE :
               </div>
               <div class="col-4" style="padding:0px;" align="left">
-              <input type="file" name="picture" style="width:50px;height:5px" id="myFile" onchange="readURL(this);" required>
+              <input type="file" name="picture" style="width:50px;height:5px;" id="myFile" onchange="readURL(this);" <?php if(isset($_GET['b'])){ echo "";}else{ echo"required";} ?> >
               </div>
               </div>
               </div>
-              <p class="card-text"> <B> ADD DISCRIPTION </B>
+              <p class="card-text"> <B> <?php if(isset($_GET['b'])){ echo "EDIT";} else{echo "ADD";} ?> DISCRIPTION </B>
               <textarea name="message" rows="5" cols="40" style="line-height: 100%;align-items: left;">
-                </textarea>
+              <?php if(isset($_GET['b'])){ echo $row['caption'];}?></textarea>
               </p>
             <?php  if(isset($_GET['b'])){  ?>
-                <button type="submit" class="btn btn-primary" style="margin-left:10px" name="submit" value="Submit" />EDIT ALBUM</button>
-            <?php  }?>
-            
+                <button type="submit" class="btn btn-primary" style="margin-left:10px" name="edit" value="<?php echo $row['id'];?>" />EDIT ALBUM</button>
+            <?php  }else{ ?>
               <button type="submit" class="btn btn-primary" style="margin-left:10px" name="submit" value="Submit" />MAKE ALBUM</button>
-            
+              <?php  }?>
             </form>
             </div>
           </div>

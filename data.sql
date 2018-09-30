@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2018 at 09:01 PM
+-- Generation Time: Sep 30, 2018 at 09:00 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -42,8 +42,8 @@ CREATE TABLE `album` (
 --
 
 INSERT INTO `album` (`id`, `Folder`, `name`, `caption`, `pic`, `thumb`) VALUES
-(35, '1533647605', 'a4', '                ', 'album/1533647605/a4.jpg', 'album/1533647605/thumb/a4_thumbnail.jpg'),
-(36, '1535910444', 'sreerag', '                utsk', 'album/1535910444/sreerag.JPG', 'album/1535910444/thumb/sreerag_thumbnail.JPG');
+(48, '1538311283', 'required', '                                                                      ', 'album/1538311283/required.JPG', 'album/1538311283/thumb/required_thumbnail.JPG'),
+(50, '1538311878', 'required12', '                                                             this is an album                       ', 'album/1538311878/required.jpg', 'album/1538311878/thumb/required_thumbnail.jpg');
 
 -- --------------------------------------------------------
 
@@ -64,11 +64,8 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `album_id`, `thumb`, `photos`, `status`) VALUES
-(1, 35, 'album/1533647605/thumb/14cf88dbc71a888763cace45cea9b3e4_thumbnail.jpg', 'album/1533647605/6947c5b032229859e9c0a4c19aecc556.jpg', 'Deactive'),
-(2, 35, 'album/1533647605/thumb/6fc9f37f353fbda4f382dffa5e7786b3_thumbnail.jpg', 'album/1533647605/552240a68e749749f0f5a02aad65badf.jpg', 'Active'),
-(3, 35, 'album/1533647605/thumb/04b5b7258e5e2dbd55def0f5ded99de1_thumbnail.jpg', 'album/1533647605/02360b34c48463fa41972b1b2bc5cecc.jpg', 'Active'),
-(10, 35, 'album/1533647605/thumb/6fc9f37f353fbda4f382dffa5e7786b3_thumbnail.jpg', 'album/1533647605/552240a68e749749f0f5a02aad65badf.jpg', 'Active'),
-(14, 35, 'album/1533647605/thumb/f6e07b1fa2a464bcf7951e7582bf9a7a_thumbnail.JPG', 'album/1533647605/c4838d8480c31a4d778dd3c0352b23f2.JPG', 'Active');
+(1, 48, 'album/1538311283/thumb/7a1ab056b37503769b1550887e597242_thumbnail.jpg', 'album/1538311283/f5e4172919c0bf390a33ea2431478b0c.jpg', 'Deactive'),
+(2, 48, 'album/1538311283/thumb/3f562839d098f4c12f8c2b99a2c7a333_thumbnail.jpg', 'album/1538311283/e2133c4dfe117c5dacebd2794e8e8caf.jpg', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -94,13 +91,13 @@ ALTER TABLE `photos`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

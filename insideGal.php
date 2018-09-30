@@ -48,7 +48,7 @@ $result=mysqli_query($conn,$data);
 if(mysqli_num_rows($result)>0){
 while($row=mysqli_fetch_assoc($result)){
 ?>
-        <a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $row['name'];?>" data-title="  " data-alt="Noah Hinton">
+        <a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $row['photos'];?>" data-title="  " data-alt="Noah Hinton">
           <div>
             <img src="<?php echo $row['thumb'];?>" title="Rahul Anil" alt="<?php echo $row['thumb'];?>" >
             <div class="lightboxgallery-gallery-item-content">

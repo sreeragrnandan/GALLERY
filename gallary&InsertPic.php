@@ -13,9 +13,35 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script src="script2.js"></script>
 <!------- Including CSS File ------>
 <link rel="stylesheet" type="text/css" href="style4.css">
+<style>
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+</style>
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -85,11 +111,12 @@ while($row=mysqli_fetch_assoc($result)){
 ?>
 <div style="float: left;">
 &emsp; 
-<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&delete=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to DELETE ?')">delete</a>
+<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&delete=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to DELETE ?')"><div class="tooltip"><i class="fal fa-quidditch fa-2x">delete</i><span class="tooltiptext">Delete photos</span>
+</div></a>
 <?php if($row['status']=='Active') { ?>
-<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&dstatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Deactivate ?')">deactive</a>
+<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&dstatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Deactivate ?')"><div class="tooltip"><i class="fal fa-thumbtack fa-2x"></i>active<span class="tooltiptext">deactivate</span></div></a>
 <?php } else{ ?>
-<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&astatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Activate ?')">activate</a>
+<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&astatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Activate ?')"><div class="tooltip"><i class="fal fa-unlink fa-2x">deactive</i><span class="tooltiptext">Activate</span></div></a>
 <?php }?>
 <br>    <a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $row['photos'];?>" data-title=" " data-alt="Noah Hinton"> 
 

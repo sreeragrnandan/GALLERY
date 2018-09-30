@@ -43,7 +43,7 @@ for ($i = 0; $i < count($_FILES['file']['name']); $i++) {
 /* --------------------------------------------------------------- */
 
 $fileNewName = md5(uniqid()); 
-    /* echo count($_FILES['file']['name']); */
+    
 /* --------------------------------------------------------------- */
          // Extensions which are allowed.
 
