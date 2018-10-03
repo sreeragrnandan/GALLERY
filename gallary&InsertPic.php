@@ -111,7 +111,7 @@ while($row=mysqli_fetch_assoc($result)){
 ?>
 <div style="float: left;">
 &emsp; 
-<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&delete=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to DELETE ?')"><div class="tooltip"><i class="fal fa-quidditch fa-2x">delete</i><span class="tooltiptext">Delete photos</span>
+<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&delete=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to DELETE ?')"><div class="tooltip"><i class="fas fa-trash fa-2x"></i><span class="tooltiptext">Delete photos</span>
 </div></a>
 <?php if($row['status']=='Active') { ?>
 <a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&dstatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Deactivate ?')"><div class="tooltip"><i class="fal fa-thumbtack fa-2x"></i>active<span class="tooltiptext">deactivate</span></div></a>

@@ -194,6 +194,7 @@ function imageResize($imageResourceId,$width,$height) {
 
 <head>
     <meta charset="utf-8" />
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>admin gallery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -203,6 +204,11 @@ function imageResize($imageResourceId,$width,$height) {
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='reset.css'>
+    <link rel='stylesheet' type='text/css' href='css/box-lid.css'>
+    <link rel='stylesheet' type='text/css' href='css/box-lid-nav.css'>
+    <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script src='js/jquery.box-lid.js'></script>
     <style>
 .tooltip {
     position: relative;
@@ -224,6 +230,27 @@ function imageResize($imageResourceId,$width,$height) {
 </head>
 
 <body>
+    <!-- menu -->
+
+    <div class='box-lid-menu' style="min-height: 500px">
+      <div class='box-lid-icon'></div>
+      <nav>
+        <h2>OPTIONS</h2>
+        <br>
+        <ul>
+          <li><button type="button" name="add" class="btn btn-success" style="background-color:  rgba(25, 211, 87, 0.5);border-radius: 10px" 
+                onclick="makeNew()">ADD ALBUM</button></li>
+                <br>
+          <li><button type="button" name="modify" class="btn btn-success" onclick="modify()"
+                 style="background-color:  rgba(70, 100, 233, 0.5);border-radius: 10px">MODYFY EXESTING</button></li>
+          
+        </ul>
+      </nav>
+    </div>
+    <div class='box-lid'>
+      <div class='box-lid-content'>
+
+    <!-- menu -->
     <div class="header" style="padding:10px;">
         <div class="container">
             <h1>Christina Home Gallery</h1>
@@ -232,15 +259,7 @@ function imageResize($imageResourceId,$width,$height) {
     </div>
     <div class="container" style="margin-top: 10px">
         <div class="row" <?php if(isset($_GET['b'])){ echo 'style="display:none"';}?>>
-            <div class="col" align="center">
-                <!-- buttons to create or modify the albums -->
-                <button type="button" name="add" class="btn btn-success" style="background-color:  rgba(25, 211, 87, 0.5);width: 100%;height: 100px;border-radius: 20px" 
-                onclick="makeNew()">ADD ALBUM</button>
-            </div>
-            <div class="col" align="center">
-                <button type="button" name="modify" class="btn btn-success" onclick="modify()"
-                 style="background-color:  rgba(70, 100, 233, 0.5);width: 100%;height: 100px;border-radius: 20px">MODYFY EXESTING</button>
-            </div>
+
                 <!-- buttons to create or modify the albums !-->
         </div>
     </div>
@@ -328,6 +347,16 @@ function imageResize($imageResourceId,$width,$height) {
             </div>
           </div>
     </div>
+    <!-- menu -->
+
+          </div>
+    </div>
+    <script>
+      $('.box-lid-menu').boxLid();
+    </script>
+
+    <!-- menu -->
+
     <!-- album making form !-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

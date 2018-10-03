@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="description" content='The simplest demo possible for the box lid navigation menu'>
+    <title>Box Lid Navigation</title>
+    <link rel='stylesheet' type='text/css' href='reset.css'>
+    <link rel='stylesheet' type='text/css' href='../css/box-lid.css'>
+    <link rel='stylesheet' type='text/css' href='../css/box-lid-nav.css'>
+    <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script src='../js/jquery.box-lid.js'></script>
+  </head>
+  <body>
+    <div class='box-lid-menu'>
+      <div class='box-lid-icon'></div>
+      <nav>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href='http://jimjh.com/box-lid' title='documentation'>Documentation</a></li>
+          <li><a href='http://github.com/jimjh/box-lid' title='github'>GitHub</a></li>
+          <li><a href='http://jimjh.com' title='Jim Lim' rel='author'>Jim Lim</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class='box-lid'>
+      <div class='box-lid-content'>
+        <p>This is meant to be a bare bones demonstration of the jQuery plugin.
+        For more details, please refer to <a href="http://jimjh.com/box-lid">the documentation</a>.
+        <img src='../images/audi.jpg'>
+      </div>
+    </div>
+    <script>
+      $('.box-lid-menu').boxLid();
+    </script>
+  </body>
+</html>
