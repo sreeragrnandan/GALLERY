@@ -204,11 +204,13 @@ function imageResize($imageResourceId,$width,$height) {
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption" rel="stylesheet">
+    <!-- side menu -->
     <link rel='stylesheet' type='text/css' href='reset.css'>
     <link rel='stylesheet' type='text/css' href='css/box-lid.css'>
     <link rel='stylesheet' type='text/css' href='css/box-lid-nav.css'>
     <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
     <script src='js/jquery.box-lid.js'></script>
+    <!-- side menu -->
     <style>
 .tooltip {
     position: relative;
