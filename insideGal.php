@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="script2.js"></script>
+  <script src="script2.js"></script>
+
 <!------- Including CSS File ------>
 <link rel="stylesheet" type="text/css" href="style4.css">
   <!--[if lt IE 9]>

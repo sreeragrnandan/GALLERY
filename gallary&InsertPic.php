@@ -21,7 +21,6 @@
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
 }
 
 .tooltip .tooltiptext {
@@ -32,10 +31,13 @@
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-
+    
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
 }
 
 .tooltip:hover .tooltiptext {
@@ -112,18 +114,19 @@ while($row=mysqli_fetch_assoc($result)){
 <div style="float: left;">
 &emsp; 
 <a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&delete=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to DELETE ?')"><div class="tooltip"><i class="fas fa-trash fa-2x"></i><span class="tooltiptext">Delete photos</span>
-</div></a>
+</div></a> <!-- DELETE -->
+&emsp;
 <?php if($row['status']=='Active') { ?>
-<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&dstatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Deactivate ?')"><div class="tooltip"><i class="fal fa-thumbtack fa-2x"></i>active<span class="tooltiptext">deactivate</span></div></a>
+<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&dstatus=<?php echo $row['id'];?>" ><div class="tooltip"><i class="fas fa-eye-slash fa-2x"></i><span class="tooltiptext">deactivate</span></div></a>
 <?php } else{ ?>
-<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&astatus=<?php echo $row['id'];?>" onclick="return confirm(' Do you want to Activate ?')"><div class="tooltip"><i class="fal fa-unlink fa-2x">deactive</i><span class="tooltiptext">Activate</span></div></a>
+<a href="gallary&InsertPic.php?a_id=<?php echo $a;?>&astatus=<?php echo $row['id'];?>"><div class="tooltip"><i class="fas fa-eye fa-2x"></i><span class="tooltiptext">Activate</span></div></a>
 <?php }?>
-<br>    <a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $row['photos'];?>" data-title=" " data-alt="Noah Hinton"> 
-
-        <div>
+<br>    
+<a class="lightboxgallery-gallery-item" target="_blank" href="<?php echo $row['photos'];?>" data-title="  " data-alt="Noah Hinton">
+          <div>
             <img src="<?php echo $row['thumb'];?>" title="Rahul Anil" alt="<?php echo $row['thumb'];?>" >
             <div class="lightboxgallery-gallery-item-content">
-              <span class="lightboxgallery-gallery-item-title"></span>
+
             </div>
           </div>
         </a>

@@ -202,23 +202,42 @@ function imageResize($imageResourceId,$width,$height) {
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <!-- google fonts -->
     <style>
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    opacity: 1;
 }
 
 .tooltip .tooltiptext {
+    visibility: hidden;
     width: 120px;
-    bottom: 100%;
-    left: 50%; 
-    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
 }
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
 }
 </style>
 </head>
@@ -257,20 +276,23 @@ function imageResize($imageResourceId,$width,$height) {
      
     ?>
 <div class="floatcontainer" >
-    <a href="gallary.php">
+    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>">
         <div class="card album" style="max-width: 15rem;">
             <img class="card-img-top" src="<?php echo $row['thumb'];?>" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">
-                    name:<?php echo $row['name'];?>
+                <span  style="font-family: 'Pacifico', cursive;font-size: 150%;"><?php echo $row['name'];?></span>
                     <br>
-                    caption:<?php echo $row['caption']; ?>
+                    <span  style="font-family: 'Dancing Script', cursive;font-size: 26px;"><?php echo $row['caption']; ?></span>
                     <br>
-                    <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')"><i class="fas fa-minus-circle fa-2x"></i></a>
+                    <a href="adminGal1.php?a=<?php echo $row['id']; ?>" onclick="return confirm(' Do you want to delete?')"><div class="tooltip"><i class="fas fa-minus-circle fa-2x"></i>
+                    <span class="tooltiptext">DELETE ALBUM</span></div></a>
                     
-                    <a href="adminGal1.php?b=<?php echo $row['id']; ?>" ><i class="fas fa-edit fa-2x"></i></a>
+                    <a href="adminGal1.php?b=<?php echo $row['id']; ?>" > <div class="tooltip"><i class="fas fa-edit fa-2x"></i>
+                    <span class="tooltiptext">EDIT DETAILS</span></div></a>
                     
-                    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>"><i class="fas fa-images fa-2x"></i></a>
+                    <a href="gallary&InsertPic.php?a_id=<?php echo $row['id']; ?>"><div class="tooltip"><i class="fas fa-images fa-2x"></i>
+                    <span class="tooltiptext">EDIT PHOTOS</span></div></a>
                 </p>
             </div>
         </div>
@@ -303,7 +325,7 @@ function imageResize($imageResourceId,$width,$height) {
             <img class="card-img-top" src="<?php if(isset($_GET['b'])){ echo $row['pic'];} else { echo 'img/album.jpg';}?> "alt="Card image cap" id="blah" >
             <div class="card-body">
             <form class="makeAlbum" action="adminGal1.php" method="post" enctype="multipart/form-data" value="<?php if(isset($_GET['b'])){ echo $row['pic'];} else { echo 'img/album.jpg';}?> ">
-              <input type="text" placeholder="ALBUM NAME" name="albumName" style="width: 300px;height: 50px;" value=<?php if(isset($_GET['b'])){ echo $row['name'];}?> required>
+              <input type="text" placeholder="ALBUM NAME" name="albumName" style="width: 300px;height: 50px;" value="<?php if(isset($_GET['b'])){ echo $row['name'];} else { echo '';}?>" required>
               <br>
               <div class="container" style="margin-top:10px">
                   <div class="row"  <?php if(isset($_GET['b'])){ echo 'style="display:none"';}?>>
