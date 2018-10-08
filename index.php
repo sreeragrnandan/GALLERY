@@ -14,8 +14,11 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <!-- google fonts -->
 </head>
 
 <body>
@@ -50,10 +53,14 @@
             ?>
         <div class="floatcontainer">
             <a href="insideGal.php?a_id=<?php echo $row['id']; ?>">
-                <div class="card album">
+                <div class="card album" style="max-width: 15rem;">
                     <img class="card-img-top" src="<?php echo $row['thumb'];?>" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text"><?php echo $row['name'];?></p>
+                    <p class="card-text">
+                    <span  style="font-family: 'Pacifico', cursive;font-size: 150%;"><?php echo $row['name'];?></span>
+                    <br>
+                    <span  style="font-family: 'Dancing Script', cursive;font-size: 26px;"><?php echo $row['caption']; ?></span>
+                    </p>
                     </div>
                 </div>
             </a>

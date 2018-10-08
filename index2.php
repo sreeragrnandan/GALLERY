@@ -211,6 +211,11 @@ function imageResize($imageResourceId,$width,$height) {
     <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
     <script src='js/jquery.box-lid.js'></script>
     <!-- side menu -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <!-- google fonts -->
     <style>
 .tooltip {
     position: relative;
