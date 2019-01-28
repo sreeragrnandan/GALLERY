@@ -14,7 +14,7 @@ $folderPath= "album/$folder/";// Declaring Path for uploaded images
   /*  */ 
     
 
-function imageResize($imageResourceId,$width,$height) {
+    function imageResize($imageResourceId,$width,$height) {
 
 
     //height and width of thumb nale
